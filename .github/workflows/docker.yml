@@ -1,0 +1,30 @@
+name: Docker Series Builds
+
+on: [push]
+  paths:
+  - 'train/**' # trigger change in train folder
+
+defaults:
+  run:
+    working-directory: ./train
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}   
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: docker build train
+      run: |
+        docker build -t train_docker_ci .
+    - name: docker run train
+      run: |
+        docker run train_docker_ci --x_train x_train.npy --y_train y_train.npy
+    - name: docker push
+      run: |
+        ylecroart/train_docker_ci
