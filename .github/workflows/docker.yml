@@ -1,8 +1,8 @@
 name: Docker Series Builds
-
-on: [push]
-  paths:
-  - 'train/**' # trigger change in train folder
+on:
+  push:
+    paths:
+    - 'train/**' # trigger change in train folder
 
 defaults:
   run:
