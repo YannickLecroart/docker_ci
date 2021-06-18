@@ -27,4 +27,4 @@ jobs:
         docker run -v ${PWD}/x_train.npy:/app/x_train.npy -v ${PWD}/y_train.npy:/app/y_train.npy train_docker_ci --x_train /app/x_train.npy --y_train /app/y_train.npy
     - name: docker push
       run: |
-        docker push ylecroart/train_docker_ci
+        docker push train_docker_ci
