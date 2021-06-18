@@ -20,5 +20,4 @@ if __name__ == '__main__':
     parser.add_argument('--x_train')
     parser.add_argument('--y_train')
     args = parser.parse_args()
-    
     train_model(args.x_train, args.y_train)
