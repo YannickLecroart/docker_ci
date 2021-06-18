@@ -24,7 +24,7 @@ jobs:
         docker build -t train_docker_ci .
     - name: docker run train
       run: |
-        docker run -v ./x_train.npy:/app/x_train.npy -v ./y_train.npy:/app/y_train.npy train_docker_ci --x_train /app/x_train.npy --y_train /app/y_train.npy
+        docker run -v x_train.npy:/app/x_train.npy -v y_train.npy:/app/y_train.npy train_docker_ci --x_train /app/x_train.npy --y_train /app/y_train.npy
     - name: docker push
       run: |
         ylecroart/train_docker_ci
